@@ -11,7 +11,7 @@ import java.util.List;
 import java.util.Optional;
 
 @Service
-@RequiredArgsConstructor //- ta adnotacja tworzy konstruktor na podstawie pół oznaczonych jako final
+@RequiredArgsConstructor //- ta adnotacja tworzy konstruktor na podstawie pól oznaczonych jako final
 public class DbService {
     @Autowired
     private  final TaskRepository repository;
@@ -24,16 +24,16 @@ public class DbService {
         return repository.findAll();
     }
 
-    public Optional<Task> getTask(final Long taskId) {
-        return repository.findById(taskId);
+    public Optional<Task> getTask(final Long id) {
+        return repository.findById(id);
     }
 
     public Task saveTask(final Task task) {
         return repository.save(task);
     }
 
-    public void deleteTask(final TaskDto taskDto) {
-        repository.deleteById(taskDto.getId());
+    public void deleteTask(final TaskDto id) {
+        repository.deleteById(id.getId());
     }
 
 
