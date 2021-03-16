@@ -2,7 +2,7 @@ plugins {
 	id 'org.springframework.boot' version '2.3.9.RELEASE'
 	id 'io.spring.dependency-management' version '1.0.11.RELEASE'
 	id 'java'
-	id 'war'
+	//id 'war'
 }
 
 group = 'com.crud'
@@ -17,7 +17,8 @@ dependencies {
 	implementation 'org.springframework.boot:spring-boot-starter-web'
 	implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
 	implementation 'org.springframework.boot:spring-boot-starter-validation'
-	runtimeOnly 'mysql:mysql-connector-java'
+	//runtimeOnly 'mysql:mysql-connector-java'
+	runtimeOnly 'org.postgresql:postgresql'
 	compileOnly 'org.projectlombok:lombok:1.18.18'
 	annotationProcessor 'org.projectlombok:lombok:1.18.18'
 	testImplementation('org.springframework.boot:spring-boot-starter-test') {
@@ -26,7 +27,7 @@ dependencies {
 	testCompileOnly 'org.projectlombok:lombok:1.18.18'
 	testAnnotationProcessor 'org.projectlombok:lombok:1.18.18'
 
-	providedRuntime 'org.springframework.boot:spring-boot-starter-tomcat'
+	//providedRuntime 'org.springframework.boot:spring-boot-starter-tomcat'
 }
 
 test {
