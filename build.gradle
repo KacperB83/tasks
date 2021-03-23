@@ -28,7 +28,7 @@ dependencies {
 	testCompileOnly 'org.projectlombok:lombok:1.18.18'
 	testAnnotationProcessor 'org.projectlombok:lombok:1.18.18'
 
-	providedRuntime 'org.springframework.boot:spring-boot-starter-tomcat'
+	//providedRuntime 'org.springframework.boot:spring-boot-starter-tomcat'
 }
 
 test {
