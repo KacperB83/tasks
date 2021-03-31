@@ -10,9 +10,8 @@ import lombok.NoArgsConstructor;
 import java.util.List;
 
 @Data
-/*@Getter
 @AllArgsConstructor
-@NoArgsConstructor*/ //@Data zastępuje pozostałe adnotacje
+@NoArgsConstructor
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class TrelloBoardDto {
 
@@ -24,6 +23,5 @@ public class TrelloBoardDto {
 
     @JsonProperty("lists")
     private List<TrelloListDto> lists;
-
 
 }
