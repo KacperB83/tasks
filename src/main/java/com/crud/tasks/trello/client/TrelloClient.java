@@ -26,15 +26,7 @@ public class TrelloClient {
     private final RestTemplate restTemplate;
     private final TrelloConfig trelloConfig;
 
-   /* //Values przeniesione do TrelloConfig
-    @Value("${trello.api.endpoint.prod}")
-    private String trelloApiEndpoint;
-    @Value("${trello.app.username}")
-    private String trelloUsername;
-    @Value("${trello.app.key}")
-    private String trelloAppKey;
-    @Value("${trello.app.token}")
-    private String trelloToken;*/
+   //Values z autentykacją przeniesione do TrelloConfig
 
     public List<TrelloBoardDto> getTrelloBoards() {
         /*TrelloBoardDto[] boardsResponse = restTemplate.getForObject(

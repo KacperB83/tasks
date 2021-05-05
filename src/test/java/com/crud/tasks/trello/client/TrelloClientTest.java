@@ -41,7 +41,7 @@ class TrelloClientTest {
 
         URI uri = new URI("http://test.com/members/tester/boards?key=test&token=test&fields=name,id&lists=all");
 
-        when(restTemplate.getForObject(uri, TrelloBoardDto[].class)).thenReturn(new TrelloBoardDto[0]);
+        when(restTemplate.getForObject(uri, TrelloBoardDto[].class)).thenReturn(null);
 
         //When
         List<TrelloBoardDto> resultList = trelloClient.getTrelloBoards();
@@ -74,6 +74,7 @@ class TrelloClientTest {
                 null,
                 "http://test.com"
         );
+
         when(restTemplate.postForObject(uri, null, CreatedTrelloCard.class)).thenReturn(createdTrelloCard);
         //When
         CreatedTrelloCard newCard = trelloClient.createNewCard(trelloCardDto);
