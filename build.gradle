@@ -10,11 +10,6 @@ group = 'com.crud'
 version = '0.0.1-SNAPSHOT'
 sourceCompatibility = '11'
 
-jar {
-	baseName = 'tasks'
-	version = '0.0.1'
-}
-
 repositories {
 	mavenCentral()
 }
