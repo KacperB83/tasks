@@ -15,18 +15,21 @@ public class EmailScheduler {
     private final SimpleEmailService simpleEmailService;
     private final TaskRepository taskRepository;
     private final AdminConfig adminConfig;
-    private Object TaskOrTasks;
 
-    @Scheduled(cron = "0 0 10 * * *")
+    //@Scheduled(cron = "0 0 10 * * *")
+    @Scheduled(fixedDelay = 10000)
     public void sendInformationEmail() {
         long size = taskRepository.count();
-
+        String taskOrTasks;
+        if(size == 1) { taskOrTasks = " task";
+        } else { taskOrTasks = " tasks";
+        }
         simpleEmailService.send(
                 new Mail(
                     adminConfig.getAdminMail(),
+                    null,
                     SUBJECT,
-                    "Currently in databese you got: " + size ,
-                    null
+                    "Currently in databese you got: " + size + taskOrTasks
                 )
         );
     }
