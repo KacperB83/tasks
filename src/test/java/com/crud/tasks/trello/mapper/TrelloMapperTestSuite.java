@@ -2,9 +2,11 @@ package com.crud.tasks.trello.mapper;
 
 import com.crud.tasks.domain.*;
 import com.crud.tasks.mapper.TrelloMapper;
+import com.crud.tasks.trello.facade.TrelloFacade;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
+import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.boot.test.context.SpringBootTest;
 
@@ -12,6 +14,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.mockito.Mockito.when;
 
 @ExtendWith(MockitoExtension.class)
 @SpringBootTest
@@ -20,22 +23,23 @@ public class TrelloMapperTestSuite {
     @InjectMocks
     private TrelloMapper trelloMapper;
 
+    @Mock
+    private TrelloFacade trelloFacade;
+
     @Test
     void mapperCardTest() {
         //Given
-        TrelloCard card = TrelloCard.builder()
+        TrelloCardDto cardDto = TrelloCardDto.builder()
                 .name("tasks")
                 .description("tasks for today")
                 .pos("null")
                 .listId("2")
                 .build();
-
         //When
-        TrelloCardDto cardDto = trelloMapper.mapToCardDto(card);
+        TrelloCard card = trelloMapper.mapToCard(cardDto);
         //Then
         assertEquals(card.getName(), cardDto.getName());
         assertEquals(card.getDescription(), cardDto.getDescription());
-
     }
 
     @Test
@@ -61,6 +65,5 @@ public class TrelloMapperTestSuite {
         //Then
         assertEquals(3, listDto.size());
         assertEquals(1, boardDtoList.size());
-
     }
 }
