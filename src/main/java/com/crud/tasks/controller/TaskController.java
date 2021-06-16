@@ -40,6 +40,7 @@ public class TaskController {
                 service.deleteTask(task);*/
         TaskDto task = taskMapper.mapToTaskDto(service.getTask(taskId).orElseThrow(TaskNotFoundException::new));
         service.deleteTask(task);
+        System.out.println("Task with id: "+taskId+ " has been deleted");
     }
 
     @RequestMapping(method = RequestMethod.PUT, value = "updateTask")
