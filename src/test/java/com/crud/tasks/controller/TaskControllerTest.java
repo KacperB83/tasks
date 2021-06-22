@@ -73,12 +73,13 @@ public class TaskControllerTest {
         when(service.getTask(task.getId())).thenReturn(Optional.of(task));
         when(taskMapper.mapToTaskDto(task)).thenReturn(taskDto);
 
-        String taskId = task.getId().toString();
+        Long taskId = task.getId();
 
         //When&Then
         mockMvc
                 .perform(MockMvcRequestBuilders
-                        .get("/v1/task/getTask/"+taskId)
+                        .get("/v1/task/getTask/")
+                        .queryParam("taskId", String.valueOf(taskId))
                         .contentType(MediaType.APPLICATION_JSON))
                 .andExpect(result -> equals(taskDto))
                 .andDo(print())
@@ -99,7 +100,8 @@ public class TaskControllerTest {
         //When&Then
         mockMvc
                 .perform(MockMvcRequestBuilders
-                        .delete("/v1/task/deleteTask/"+taskId)
+                        .delete("/v1/task/deleteTask/")
+                        .queryParam("taskId", taskId)
                         .contentType(MediaType.APPLICATION_JSON))
                 .andDo(print())
                 .andExpect(ResultMatcher.matchAll());

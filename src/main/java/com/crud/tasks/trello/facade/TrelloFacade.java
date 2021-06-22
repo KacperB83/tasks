@@ -13,7 +13,7 @@ import java.util.List;
 
 @Component
 public class TrelloFacade {
-    private static final Logger LOGGER = LoggerFactory.getLogger(TrelloFacade.class);
+    //private static final Logger LOGGER = LoggerFactory.getLogger(TrelloFacade.class);
     @Autowired
     private TrelloService trelloService;
 
