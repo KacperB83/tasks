@@ -128,7 +128,7 @@ public class TaskControllerTest {
                         .contentType(MediaType.APPLICATION_JSON)
                         .content(jsonContent))
                 .andDo(print())
-                .andExpect(result -> result.equals(taskDto1));
+                .andExpect(ResultMatcher.matchAll());
     }
     @Test
     void shouldCreateTask() throws Exception {
