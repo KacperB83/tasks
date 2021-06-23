@@ -18,6 +18,7 @@ import java.util.List;
 
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.when;
+import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
 
 @SpringJUnitWebConfig
 @WebMvcTest(TrelloController.class)
@@ -65,7 +66,8 @@ class TrelloControllerTest {
                         .get("/v1/trello/getTrelloBoards")
                         .contentType(MediaType.APPLICATION_JSON))
                 .andExpect(MockMvcResultMatchers.status().is(200)) // or isOk()
-                .andExpect(MockMvcResultMatchers.jsonPath("$", Matchers.hasSize(0)));
+                .andExpect(MockMvcResultMatchers.jsonPath("$", Matchers.hasSize(0)))
+                .andDo(print());
     }
 
     @Test
@@ -87,6 +89,7 @@ class TrelloControllerTest {
                 .andExpect(MockMvcResultMatchers.jsonPath("$[0].lists", Matchers.hasSize(1)))
                 .andExpect(MockMvcResultMatchers.jsonPath("$[0].lists[0].id", Matchers.is("1")))
                 .andExpect(MockMvcResultMatchers.jsonPath("$[0].lists[0].name", Matchers.is("Test list")))
-                .andExpect(MockMvcResultMatchers.jsonPath("$[0].lists[0].closed", Matchers.is(false)));
+                .andExpect(MockMvcResultMatchers.jsonPath("$[0].lists[0].closed", Matchers.is(false)))
+                .andDo(print());
     }
 }
