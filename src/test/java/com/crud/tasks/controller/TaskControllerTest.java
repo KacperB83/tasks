@@ -115,7 +115,7 @@ public class TaskControllerTest {
         Task task = new Task(1L, "test task", "to do");
 
         when(taskMapper.mapToTask(taskDto)).thenReturn(task);
-        when(service.getTask(1L)).thenReturn(Optional.of(task));
+        when(service.saveTask(task)).thenReturn(task);
         when(taskMapper.mapToTaskDto(task)).thenReturn(taskDto1);
 
         Gson gson = new Gson();
@@ -127,6 +127,8 @@ public class TaskControllerTest {
                         .put("/v1/task/updateTask")
                         .contentType(MediaType.APPLICATION_JSON)
                         .content(jsonContent))
+
+                .andExpect(result -> equals(taskDto1))
                 .andDo(print())
                 .andExpect(ResultMatcher.matchAll());
     }
